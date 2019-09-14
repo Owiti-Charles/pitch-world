@@ -1,9 +1,9 @@
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color">
-    <a class="navbar-brand" href="#"><strong>Pich-World</strong> </a>
+    <a class="navbar-brand" href="{{url_for('main.index')}}"><strong>Pich-World</strong> </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" >
+    <div class="collapse navbar-collapse" id="navbarSupportedContent-4">
         <ul class="navbar-nav ml-auto">
             {% if current_user.is_authenticated %}
             <li class="nav-item dropdown">
@@ -11,7 +11,7 @@
               aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-user"></i>&nbsp;<strong>{{current_user.username}}</strong> </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-              <a class="dropdown-item" href="#"><i class="far fa-user"></i>&nbsp; My account</a>
+              <a class="dropdown-item" href="{{url_for('main.profile',name=current_user.username)}}"><i class="far fa-user"></i>&nbsp; My account</a>
               <a class="dropdown-item" href="{{url_for('auth.logout')}}"><i class="fas fa-sign-out-alt"></i>&nbsp; Log out</a>
             </div>
             </li>
