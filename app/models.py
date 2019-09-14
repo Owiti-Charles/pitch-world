@@ -9,6 +9,12 @@ class User(db.Model,UserMixin):
     email  = db.Column(db.String(255),unique = True,nullable = False)
     secure_password = db.Column(db.String(255),nullable = False)
     
+
+    @property
+    def set_password(self):
+        raise AttributeError('You cannot read the password attribute')
+
+    @set_password.setter
     def password(self, password):
         self.secure_password = generate_password_hash(password)
 
@@ -27,4 +33,7 @@ class User(db.Model,UserMixin):
     
     def __repr__(self):
         return f'User {self.username}'
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
