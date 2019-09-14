@@ -9,9 +9,10 @@ bootstap = Bootstrap()
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.load_view = 'auth.login'
-app = Flask(__name__)
+
 
 def create_app():
+    app = Flask(__name__)
     app.config.from_object(Config)
     from .auth import auth as authentication_blueprint
     from .main import main as main_blueprint
