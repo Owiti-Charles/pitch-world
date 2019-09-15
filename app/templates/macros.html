@@ -12,8 +12,12 @@
                         <p class="text-center"> Category: {{category.category}}</p>
 					</blockquote>
 					<p><span style="border-radius:50%;">{{category.comment.count()}} Comments</span> 
-						<span><i class="fa fa-thumbs-up" style="font-size:18px;color: green"></i></span>
-						&nbsp;<span><i class="fa fa-thumbs-down" style="color:red;"></i></span></p>
+
+						<span> <a href="{{url_for('main.like',id = category.id)}}"><i class="fa fa-thumbs-up" style="font-size:18px;color: green"></i></a> {{category.upvote.count()}}</span>
+						&nbsp;
+						
+						<span><i class="fa fa-thumbs-down" style="color:red;"></i></span></p>
+
 			    	<a href="{{url_for('main.comment',pitch_id = category.id)}}" class="btn btn-info btn-sm"> Comment</a>
 				</div>
             </div>

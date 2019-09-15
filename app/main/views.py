@@ -77,13 +77,12 @@ def update_pic(name):
         db.session.commit()
     return redirect(url_for('main.profile',name=name))
 
-@main.route('/pitch/like/<int: pitch_id>',methods = ['POST'],['GET'])
-def like(pitch_id):
-    user = current_user._get_current_object().id
-    all_upvotes = Upvote.query.filter_by(pitch_id=pitch_id).all()
-
-    if Upvote.query.filter_by(Upvote.user_id == user_id,Upvote.pitch_id == pitch_id):
-        return redirect(url_for('main.index'))
-    new_vote = Upvote(user = user, pitch_id= pitch_id)
+@main.route('/like/<int:id>',methods = ['POST','GET'])
+@login_required
+def like(id):
+    user = Upvote.query.get(id)
+    all_upvotes = Upvote.query.filter_by(id=id).all()
+    pitch = Pitch.query.get(id)
+    new_vote = Upvote(user = user, pitch = pitch,upvote = 1)
     new_vote.save()
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.index',id = pitch.id))
