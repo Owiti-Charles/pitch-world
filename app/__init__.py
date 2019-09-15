@@ -10,7 +10,7 @@ bootstap = Bootstrap()
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.load_view = 'auth.login'
-photos = UploadSet('photos', IMAGES)
+photos = UploadSet('photos',IMAGES)
 
 
 
