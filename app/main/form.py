@@ -15,3 +15,6 @@ class PitchForm(FlaskForm):
 class CommentForm(FlaskForm):
     comment = StringField('Leave a comment',validators=[Required()])
     submit = SubmitField('Comment')
+
+class UpvoteForm(FlaskForm):
+    submit = SelectField('Like')
