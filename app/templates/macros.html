@@ -2,15 +2,18 @@
 <div class="row">
 	{% if piches %}
 		{% for category in piches %}
-		<div class="col-md-4" >
+		<div class="col-md-4">
 			<div class="thumbnail text-center">
 			    <h5 class="card-header">{{category.title}}</h5>
 			    <div class="card-body">
 			    	<blockquote class="blockquote">
 			    		<h2>{{category.post}}</h2>
-                        <footer class="blockquote-footer"> Posted by {{category.user.username}}</footer>
-                        <footer class="blockquote-footer"> {{category.category}}</footer>
+                        <footer class="blockquote-footer"> Posted by: {{category.user.username}}</footer>
+                        <p class="text-center"> Category: {{category.category}}</p>
 					</blockquote>
+					<p><span style="border-radius:50%;">{{category.comment.count()}} Comments</span> 
+						<span><i class="fa fa-thumbs-up" style="font-size:18px;color: green"></i></span>
+						&nbsp;<span><i class="fa fa-thumbs-down" style="color:red;"></i></span></p>
 			    	<a href="{{url_for('main.comment',pitch_id = category.id)}}" class="btn btn-info btn-sm"> Comment</a>
 				</div>
             </div>

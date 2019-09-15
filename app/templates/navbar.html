@@ -8,12 +8,15 @@
                 <li class="nav-item">
                   <a class="nav-link" href="{{url_for('main.index')}}">All Pitches</a>
                 </li>
+                {% if current_user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('main.new_pitch')}}">New Pitch</a>
+                </li>
+                {% endif %}
             </ul>
         <ul class="navbar-nav ml-auto">
             {% if current_user.is_authenticated %}
-            <li class="nav-item">
-                <a href="{{url_for('main.new_pitch')}}">New Pitch</a>
-            </li>
+
             <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" style= 'margin-right:30px' data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
