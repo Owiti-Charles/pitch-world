@@ -39,10 +39,12 @@ class User(db.Model,UserMixin):
 class Pitch(db.Model):
     __tablename__ = 'pitches'
     id = db.Column(db.Integer, primary_key = True)
+    title = db.Column(db.String(255))
     post = db.Column(db.Text())
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     time = db.Column(db.DateTime, default = datetime.utcnow)
     category = db.Column(db.String(255), index = True)
+    
     def save_p(self):
         db.session.add(self)
         db.session.commit()

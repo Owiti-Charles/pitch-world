@@ -1,13 +1,27 @@
 from flask import render_template, redirect, url_for,abort,request
 from . import main
-from flask_login import login_required
-from ..models import User
-from .form import UpdateProfile
+from flask_login import login_required,current_user
+from ..models import User,Pitch
+from .form import UpdateProfile,PitchForm
 from .. import db,photos
 
 @main.route('/')
 def index():
     return render_template('index.html')
+
+@main.route('/new_pitch', methods = ['POST','GET'])
+@login_required
+def new_pitch():
+    form = PitchForm()
+    if form.validate_on_submit():
+        title = form.title.data
+        post = form.post.data
+        category = form.category.data
+        user_id = current_user
+        new_pitch = Pitch(post=post,user_id=current_user._get_current_object().id,category=category)
+        new_pitch.save_p()
+        return redirect(url_for('main.index'))
+    return render_template('create_pitch.html', form = form)
 
 
 @main.route('/user/<name>')
