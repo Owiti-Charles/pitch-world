@@ -1,7 +1,7 @@
 from flask import render_template, redirect, url_for,abort,request
 from . import main
 from flask_login import login_required,current_user
-from ..models import User,Pitch
+from ..models import User,Pitch,Comment
 from .form import UpdateProfile,PitchForm,CommentForm
 from .. import db,photos
 
@@ -33,7 +33,11 @@ def comment(pitch_id):
         comment = form.comment.data
         post_id = Pitch.query.get(pitch_id)
         user_id = current_user._get_current_object().id
-        new_comment = 
+        new_comment = Comment(comment = comment,user_id = user_id,pitch_id = pitch_id)
+
+        new_comment.save_c()
+        return redirect(url_for('.new_comment', pitch_id = pitch_id))
+    return render_template('comment.html', form =form,)
 
 
 @main.route('/user/<name>')
