@@ -2,7 +2,7 @@ from flask import render_template, redirect, url_for,abort,request
 from . import main
 from flask_login import login_required,current_user
 from ..models import User,Pitch
-from .form import UpdateProfile,PitchForm
+from .form import UpdateProfile,PitchForm,CommentForm
 from .. import db,photos
 
 @main.route('/')
@@ -24,6 +24,16 @@ def new_pitch():
         new_pitch.save_p()
         return redirect(url_for('main.index'))
     return render_template('create_pitch.html', form = form)
+
+@main.route('/new_comment/<int:pitch_id>')
+@login_required
+def comment(pitch_id):
+    form = CommentForm()
+    if form.validate_on_submit():
+        comment = form.comment.data
+        post_id = Pitch.query.get(pitch_id)
+        user_id = current_user._get_current_object().id
+        new_comment = 
 
 
 @main.route('/user/<name>')
