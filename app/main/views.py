@@ -80,7 +80,11 @@ def update_pic(name):
 @main.route('/like/<int:id>',methods = ['POST','GET'])
 @login_required
 def like(id):
+    
     user = Upvote.query.get(id)
+    users = User.filter_by(id = id).first()
+    if users is None:
+        return redirect(url_for('auth.login',user = user))
     all_upvotes = Upvote.query.filter_by(id=id).all()
     pitch = Pitch.query.get(id)
     new_vote = Upvote(user = user, pitch = pitch,upvote = 1)
