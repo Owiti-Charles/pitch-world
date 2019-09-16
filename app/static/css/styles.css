@@ -25,14 +25,18 @@
 #postform{
     color: white;
     margin-top: 5%;
-    background-color: rgba(0, 0, 0, 0.356);
+    background-color: rgba(0, 0, 0, 0.456);
     padding:4%;
     border-radius: 8px;
 }
 #login{
     margin-top: 5%;
     color: white;
-    background-color: rgba(0, 0, 0, 0.356);
+    background-color: rgba(0, 0, 0, 0.456);
     border-radius: 8px;
     padding:3%;
+}
+#sign{
+    color:rgb(0, 0, 0);
+    text-decoration: underline;
 }
