@@ -15,10 +15,12 @@
     background-color: aliceblue;
 }
 #posts{
-    color: rgb(135, 135, 245);
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
 }
 .foot{
     margin: 20px;
+    
 }
 #postform{
     color: white;
@@ -26,5 +28,11 @@
     background-color: rgba(0, 0, 0, 0.356);
     padding:4%;
     border-radius: 8px;
-
+}
+#login{
+    margin-top: 5%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.356);
+    border-radius: 8px;
+    padding:3%;
 }

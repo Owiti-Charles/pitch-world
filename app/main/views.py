@@ -82,7 +82,7 @@ def update_pic(name):
 def like(id):
     
     user = Upvote.query.get(id)
-    users = User.filter_by(id = id).first()
+    users = User.query.filter_by(id = id).first()
     if users is None:
         return redirect(url_for('auth.login',user = user))
     all_upvotes = Upvote.query.filter_by(id=id).all()
