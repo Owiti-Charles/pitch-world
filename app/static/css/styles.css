@@ -1,4 +1,30 @@
-.overlay{
-    background-color: rgba(20, 19, 19, 0.582);
-    
+
+.body{
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#cats{
+    color: white;
+    font-size: 18px;
+}
+#carded{
+    border-radius:6px; 
+    background-color: aliceblue;
+}
+#posts{
+    color: rgb(135, 135, 245);
+}
+.foot{
+    margin: 20px;
+}
+#postform{
+    color: white;
+    margin-top: 5%;
+    background-color: rgba(0, 0, 0, 0.356);
+    padding:4%;
+    border-radius: 8px;
+
 }
