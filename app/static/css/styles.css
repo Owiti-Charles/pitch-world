@@ -12,11 +12,14 @@
 }
 #carded{
     border-radius:6px; 
-    background-color: aliceblue;
+    background-color: rgb(241, 241, 241);
 }
 #posts{
     color: rgb(255, 255, 255);
     font-weight: bolder;
+    margin-top: 2%;
+    font-size: 40px;
+    font-family: 'Farro', sans-serif;
 }
 .foot{
     margin: 20px;
@@ -39,4 +42,18 @@
 #sign{
     color:rgb(0, 0, 0);
     text-decoration: underline;
+}
+#coms{
+    color: white;
+}
+#allcomments{
+    /* background-color: rgba(0, 0, 0, 0.589); */
+    padding-top: 2%;
+    border-radius: 10px;
+    height: 100%;
+    
+}
+.commentform{
+    color: white;
+    margin-top: 1%;
 }
