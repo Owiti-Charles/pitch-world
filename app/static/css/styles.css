@@ -24,6 +24,9 @@
     font-size: 40px;
     font-family: 'Farro', sans-serif;
 }
+.pict{
+    margin-top: 2%;
+}
 .foot{
     margin: 20px;
     
@@ -80,4 +83,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50% 50%;
+}
+#imgform{
+    display: none;
 }

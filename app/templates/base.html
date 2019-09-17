@@ -23,8 +23,11 @@
         {% block content %}
         {% endblock %}
 {% block scripts %}
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.4.1.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/particles.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
 <script src="particles.js" type="text/javascript"></script>
 <script src="app.js" type="text/javascript"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
