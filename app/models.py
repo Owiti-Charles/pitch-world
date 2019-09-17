@@ -108,11 +108,6 @@ class Upvote(db.Model):
     def __repr__(self):
         return f'{self.user_id}:{self.pitch_id}'
 
-
-
-
-    
-
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
