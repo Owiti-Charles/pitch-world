@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% import 'bootstrap/wtf.html' as wtf%}
 {% block content %}
-<div class="container"> 
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('static',filename='css/particle.css')}}">
+{% endblock %}
+<div class="container" id="particle-js"> 
     <div class="row">
       <div class= "col-md-3"> </div>
       <div class="col-md-6" id="login">

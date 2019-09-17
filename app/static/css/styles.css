@@ -4,6 +4,9 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    width: 100%;
+    padding: 0;
+    height: 100%;
 }
 
 #cats{
@@ -71,4 +74,10 @@
 .updateprofile{
     margin-top: 5%;
     color: white;
+}
+#particles-js {
+    height: inherit;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
 }
