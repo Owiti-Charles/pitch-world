@@ -11,10 +11,10 @@
 									<p class="text-center"> Category: {{category.category}}</p>
 									<footer class="blockquote-footer text-center" > Posted by: {{category.user.username}}</footer>
 								<div><span class="foot" >{{category.comment.count()}} Comments</span> 
-									<span class="foot" > <a href="{{url_for('main.like',id = category.id)}}"><i class="fa fa-thumbs-up" style="font-size:18px;color: green"></i></a> {{category.upvote.count()}}</span>
-									&nbsp;
+									<span class="foot" > <a href="{{url_for('main.like',pitch_id = category.id)}}"><i class="fa fa-thumbs-up" style="font-size:18px;color: green"></i></a> {{category.upvote.count()}}</span>
 									
-									<span class="foot"><i class="fa fa-thumbs-down" style="color:red;"></i></span></div>
+									
+									<span class="foot"> <a href="{{url_for('main.dislike',pitch_id = category.id)}}"> <i class="fa fa-thumbs-down" style="color:red;"></i> {{category.downvote.count()}}</a></span></div>
 			
 								<a href="{{url_for('main.comment',pitch_id = category.id)}}" class="btn btn-info btn-sm"> Comment</a>
 							</div>

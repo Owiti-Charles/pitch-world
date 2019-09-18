@@ -16,5 +16,3 @@ class CommentForm(FlaskForm):
     comment = TextAreaField('Leave a comment',validators=[Required()])
     submit = SubmitField('Comment')
 
-class UpvoteForm(FlaskForm):
-    submit = SelectField('Like')

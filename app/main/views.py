@@ -1,8 +1,8 @@
 from flask import render_template, redirect, url_for,abort,request
 from . import main
 from flask_login import login_required,current_user
-from ..models import User,Pitch,Comment,Upvote
-from .form import UpdateProfile,UpvoteForm,PitchForm,CommentForm
+from ..models import User,Pitch,Comment,Upvote,Downvote
+from .form import UpdateProfile,PitchForm,CommentForm
 from .. import db,photos
 
 @main.route('/')
@@ -79,13 +79,20 @@ def update_pic(name):
         db.session.commit()
     return redirect(url_for('main.profile',name=name))
 
-@main.route('/like/<int:id>',methods = ['POST','GET'])
+@main.route('/like/<int:pitch_id>',methods = ['POST','GET'])
 @login_required
-def like(id):
-    
-    user = Upvote.query.get(id)
-    all_upvotes = Upvote.query.filter_by(id=id).all()
-    pitch = Pitch.query.get(id)
-    new_vote = Upvote(user = user, pitch = pitch,upvote = 1)
+def like(pitch_id):
+    all_upvotes = Upvote.query.filter_by(pitch_id=pitch_id).all()
+    user_id = current_user._get_current_object().id
+    new_vote = Upvote(user_id = user_id, pitch_id = pitch_id,upvote = 1)
     new_vote.save()
-    return redirect(url_for('main.index',id = pitch.id))
+    return redirect(url_for('main.index',pitch_id = pitch_id))
+
+@main.route('/dislike/<int:pitch_id>',methods = ['POST','GET'])
+@login_required
+def dislike(pitch_id):
+    all_dislikes = Downvote.query.filter_by(pitch_id=pitch_id).all()
+    user_id = current_user._get_current_object().id
+    new_vote = Downvote(user_id = user_id, pitch_id = pitch_id,downvote = 1)
+    new_vote.save()
+    return redirect(url_for('main.index',pitch_id = pitch_id))
