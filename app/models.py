@@ -84,7 +84,6 @@ class Upvote(db.Model):
     __tablename__ = 'upvotes'
 
     id = db.Column(db.Integer,primary_key=True)
-    upvote = db.Column(db.Integer,default=1)
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
     pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
     
@@ -103,7 +102,6 @@ class Downvote(db.Model):
     __tablename__ = 'downvotes'
 
     id = db.Column(db.Integer,primary_key=True)
-    downvote = db.Column(db.Integer,default=1)
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
     pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
     
@@ -111,10 +109,9 @@ class Downvote(db.Model):
     def save(self):
         db.session.add(self)
         db.session.commit()
-
-    def add_downvotes(cls,id):
-        downvote_pitch = Downvote(user = current_user, pitch_id=id)
-        downvote_pitch.save()
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
 
     def __repr__(self):
         return f'{self.user_id}:{self.pitch_id}'
