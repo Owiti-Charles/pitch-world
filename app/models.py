@@ -92,9 +92,11 @@ class Upvote(db.Model):
         db.session.add(self)
         db.session.commit()
 
-    def add_upvotes(cls,id):
-        upvote_pitch = Upvote(user = current_user, pitch_id=id)
-        upvote_pitch.save()
+    @classmethod
+    def get_upvotes(cls,id):
+        upvote = Upvote.query.filter_by(pitch_id=id).all()
+        return upvote
+
 
     def __repr__(self):
         return f'{self.user_id}:{self.pitch_id}'
@@ -109,9 +111,10 @@ class Downvote(db.Model):
     def save(self):
         db.session.add(self)
         db.session.commit()
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
+    @classmethod
+    def get_downvotes(cls,id):
+        downvote = Downvote.query.filter_by(pitch_id=id).all()
+        return downvote
 
     def __repr__(self):
         return f'{self.user_id}:{self.pitch_id}'
